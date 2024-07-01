@@ -2,54 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
-    font-family: "Rubik", sans-serif;
+    font-family: "Overpass", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
-
-
-
-#Work{
-  background-color: hsl(15, 100%, 70%);
-  background-image: url("/src/time-tracking-dashboard/images/icon-work.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-}
-
-#Play{
-  background-image: url("/src//time-tracking-dashboard//images/icon-play.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color: hsl(195, 74%, 62%);
-}
-
-#Study{
-  background-image: url("/src//time-tracking-dashboard//images/icon-study.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color: hsl(348, 100%, 68%);
-}
-
-#Exercise{
-  background-image: url("/src//time-tracking-dashboard//images/icon-exercise.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color: hsl(145, 58%, 55%);
-}
-
-#Social{
-  background-image: url("/src//time-tracking-dashboard//images/icon-social.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color:  hsl(264, 64%, 52%);
-}
-
-#Self {
-  background-image: url("/src//time-tracking-dashboard//images/icon-self-care.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color:  hsl(43, 84%, 65%);
-}
-
+  

@@ -13,31 +13,24 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Blue: hsl(246, 80%, 60%)
-
-- Light red (work): hsl(15, 100%, 70%)
-- Soft blue (play): hsl(195, 74%, 62%)
-- Light red (study): hsl(348, 100%, 68%)
-- Lime green (exercise): hsl(145, 58%, 55%)
-- Violet (social): hsl(264, 64%, 52%)
-- Soft orange (self care): hsl(43, 84%, 65%)
+- Orange: hsl(25, 97%, 53%)
 
 ### Neutral
 
-- Very dark blue: hsl(226, 43%, 10%)
-- Dark blue: hsl(235, 46%, 20%)
-- Desaturated blue: hsl(235, 45%, 61%)
-- Pale Blue: hsl(236, 100%, 87%)
+- White: hsl(0, 0%, 100%)
+- Light Grey: hsl(217, 12%, 63%)
+- Dark Blue: hsl(213, 19%, 18%)
+- Very Dark Blue: hsl(216, 12%, 8%)
 
 ## Typography
 
 ### Body Copy
 
-- Font size: 18px (card titles e.g. Work, Play)
+- Font size (paragraph): 15px
 
 ### Font
 
-- Family: [Rubik](https://fonts.google.com/specimen/Rubik)
-- Weights: 300, 400, 500
+- Family: [Overpass](https://fonts.google.com/specimen/Overpass)
+- Weights: 400, 700
 
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma.
