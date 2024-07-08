@@ -1,19 +1,27 @@
-import { useState } from "react"
-import {BrowserRouter ,Routes, Route} from 'react-router-dom'
-import { RatingPage } from "./interactive-rating-component-main/components/RatingPage"
-import { ThankYou } from "./interactive-rating-component-main/components/ThankYou"
+import { Navbar } from "./ecommerce-product-page-main/components/Navbar"
+import { Product } from "./ecommerce-product-page-main/components/Product"
+import { useState } from "react";
 
 function App() {
-  const [rate, setRate] = useState("0")
+  const [count, setCount] = useState<number>(0);
+  const [cartNumber, setCartNumber] = useState<number>(0)
+  const [tog, setTog] = useState<boolean>(true)
+
+  const handleAdd = () => {
+    setCartNumber(count)
+    setCount(0)
+  }
 
   return (
-    <div className=" bg-Very-Dark-Blue flex items-center justify-center  min-h-screen">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RatingPage rate={rate} setRate={setRate}/>}/>
-          <Route path="/ThankYou" element={<ThankYou rate={rate}/>}/>
-        </Routes>
-      </BrowserRouter>
+    <div className="lg:p-10 flex-col flex lg:gap-20">
+      <Navbar cartNumber={cartNumber} setTog={setTog} tog={tog}/>
+
+      <Product cartNumber={cartNumber}
+       handleAdd={handleAdd} 
+       count={count} 
+       setCount={setCount}
+       tog={tog}
+       />
     </div>
   )
 }

@@ -6,12 +6,13 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {                           
-        'Orange': 'hsl(25, 97%, 53%)',
-        'Light-Grey': 'hsl(217, 12%, 63%)',
-        'Dark-Blue': 'hsl(213, 19%, 18%)',
-        'light-dark-blue': '#333e4d',
-        'Very-Dark-Blue': 'hsl(216, 12%, 8%)',
+      colors: {                                 
+         'Orange': 'hsl(26, 100%, 55%)',
+         'Pale-orange': 'hsl(25, 100%, 94%)',
+         'Very-dark-blue': 'hsl(220, 13%, 13%)',
+         'Dark-grayish-blue': 'hsl(219, 9%, 45%)',
+         'Grayish-blue': 'hsl(220, 14%, 75%)',
+         'Light-grayish-blue': 'hsl(223, 64%, 98%)',
       },
 
   },
