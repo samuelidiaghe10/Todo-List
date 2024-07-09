@@ -3,14 +3,8 @@
 @tailwind utilities;
 
 *{
-    font-family: "Kumbh Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-variation-settings:
-      "YOPQ" 300;
     /* outline: 2px dashed red; */
-}
-
-.cart{
-  filter: invert(46%) sepia(8%) saturate(693%) hue-rotate(178deg) brightness(32%) contrast(88%);
 }
