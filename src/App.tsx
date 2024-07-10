@@ -1,76 +1,130 @@
-import faqsIcon from '../src/images/icons8-faq-80.png'
-import arrowDown from '../src/images/icons8-arrow-down-50.png'
-import arrowUp from '../src/images/icons8-send-letter-50.png'
-import { useState } from 'react'
+import { useState } from "react"
+import roller from '../src/images/icons8-paint-roller-50 (1).png'
+import close from '../src/images/icons8-close-50.png'
+
+type Todo = {
+  id: number,
+  task: string,
+  completed: boolean
+}
 
 function App() {
-  const faqs = [
-    {
-      id: 1,
-      question: 'Is there a free trial availble?',
-      answer: "Yes you can try us for 30 days. If you want, we'll provide you with a free 30-minute onboarding call to get up and running."
-    },
+  const [todo, setTodo] = useState<Todo[]>([])
 
-    {
-      id: 2,
-      question: 'Can i change my plan later?',
-      answer: 'Of course you can! Our pricing scales with your company. Chat to our friendly team to find a solution that works for you as you grow.'
-    },
+  const [newTodo, setNewTodo] = useState<string>('')
 
-    {
-      id: 3,
-      question: 'What is your cancellation policy?',
-      answer: "We understand that things change, You can cancel your plan at any time and we'll refund you the difference you paid."
-    },
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-    {
-      id: 4,
-      question: 'Can other info be added to an invoice?',
-      answer: 'At the moment, there are no other ways for additional info to be added to an invoice.'
-    },
-  ]
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-  const [show, setShow] = useState<null | number>(null)
+  const [filter, setFilter] = useState<'all'| 'active' | 'completed'>('all')
 
-  const handleToggle = (index:number) => {
-    if(show === index){
-      return setShow(null)
-    }
+  const d = new Date
 
-    setShow(index)
+  const day = days[d.getDay()]
+
+  const month = months[d.getMonth()] 
+
+  const year = d.getFullYear()
+
+  const date = d.getDate()
+
+  const [toggle, setToggle] = useState<boolean>(false)
+
+  const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setNewTodo(event.target.value)
   }
 
+  const handleAdd = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if(event.key === 'Enter' && newTodo.trim() !== '') {
+        setTodo([...todo, {id: Date.now(), task:newTodo, completed:false}])
+        setNewTodo('')
+    } 
+  }
+
+  const handleCompleted = (id:number) => {
+    setTodo(
+      todo.map(todo =>
+        todo.id === id ? {...todo, completed: !todo.completed} : todo
+      )
+    )
+  }
+
+  const handleDelete = (id: number) => {
+    setTodo(todo.filter(todo => todo.id != id))
+  }
+
+  const filteredTodo = filter === 'all' ? todo : filter === 'completed' ? todo.filter(todo => todo.completed) : todo.filter(todo => !todo.completed)
+
+  const inCompleteTodo = todo.filter(todo => !todo.completed).length
+
   return (
-    <div className='flex flex-col items-center py-8 gap-20 md:py-20'>
-      <div className='flex flex-col items-center gap-5'>
-        <div>
-          <img src={faqsIcon} alt="" />
+    <div className={`flex ${toggle ? 'bg-black text-white' : 'bg-white text-black'} pt-10 md:pt-20 justify-center min-h-screen`}>
+      <div className="lg:w-[27rem] w-[22rem] flex flex-col gap-3">
+        <div className="flex mb-5 items-center justify-between">
+          <div className="text-2xl font-bold">
+            {`${day}  ${month}  ${date} ${year}`}
+          </div>
+
+          <button onClick={() => setToggle(!toggle)}>
+            <img className={`w-[30px] ${toggle ? 'light' : ''}`} src={roller} alt="" />
+          </button>
         </div>
 
-        <h1 className='md:text-5xl text-3xl text-center font-semibold'>
-          Frequently asked questions
-        </h1>
+        <div className="flex text-lg items-center. justify-between">
+          <div>
+            {inCompleteTodo} tasks
+          </div>
+
+          <div className={`flex  items-center gap-3`}>
+            <button className={`${filter === 'all' ? `${toggle ? 'bg-white text-black rounded-full px-2' : 'text-white bg-black'}` : ''} rounded-full px-2`}
+            onClick={() => setFilter('all')}>
+              All
+            </button>
+
+            <button className={`${filter === 'active' ? `${toggle ? 'bg-white text-black ' : 'text-white bg-black'}` : ''} rounded-full px-2`}
+            onClick={() => setFilter('active')}>
+              Active
+            </button>
+
+            <button className={`${filter === 'completed' ? `${toggle ? 'bg-white text-black ' : 'text-white bg-black'}` : ''} rounded-full px-2`}
+            onClick={() => setFilter('completed')}>
+              Completed
+            </button>
+          </div>
+        </div>
+
+        <div className="">
+          <input value={newTodo}
+          onChange={handleInput}
+          onKeyPress={handleAdd}
+          className={`outline-none border-b-2 w-full ${toggle ? 'bg-black text-white' : ''}`}
+          type="text" 
+          placeholder="Add a new task..." />
+        </div>
+
+        <ul className="divide-y-2">
+
+          {filteredTodo.map((todo) =>
+            <li key={todo.id} className="flex items-center justify-between">
+              <div className="flex  py-2 items-center gap-5">
+                <input checked={todo.completed} onChange={() => handleCompleted(todo.id)}
+                type="checkbox" />
+
+                <p className={todo.completed ? 'line-through' : ''}>
+                  {todo.task}
+                </p>
+              </div>
+
+              <button onClick={() => handleDelete(todo.id)}>
+                <img src={close} className={`w-[17px] ${toggle ? 'light' : ''}`} alt="" />
+              </button>
+            </li>
+          )}
+        </ul>
+
       </div>
 
-      <ul className='flex flex-col w-[22rem] divide-y-2 md:w-[35rem]'>
-        {faqs.map((faq, index) =>
-          <li key={index} className='flex py-7 flex-col gap-5'>
-            <div className='flex items-center justify-between'>
-              <h3 className='lg:text-xl font-medium text-md'>
-                {faq.question}
-              </h3>
-
-              <button onClick={() => handleToggle(index)}>
-                <img className='w-[23px]' src={show === index ? arrowUp : arrowDown} alt="" />
-              </button>
-            </div>
-
-            <p className={`${show === index ? 'inline-block': 'hidden'} lg:text-md text-sm`}>
-              {faq.answer}
-            </p>
-          </li>
-        )}
-      </ul>
     </div>
   )
 }
