@@ -1,5 +1,6 @@
 <h1>Todo List Application</h1>
-<p>Link: <a href="(https://todo-list-tau-ebon-70.vercel.app)"/>/</p>
+
+Todo list Application: [https://todo-list-tau-ebon-70.vercel.app](https://todo-list-tau-ebon-70.vercel.app)
 
 ![desktop-preview](https://github.com/user-attachments/assets/ed383fe5-508f-4654-9ab3-400955632dd6)
 
